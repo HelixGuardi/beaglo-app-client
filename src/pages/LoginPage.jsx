@@ -1,5 +1,5 @@
-import Logo from '../assets/logo-name-icon-removebg.png'
-import Footer from '../components/Footer';
+import { Link } from "react-router-dom";
+import Logo from "../assets/logo-name-icon-removebg.png";
 
 function LoginPage() {
   return (
@@ -34,11 +34,12 @@ function LoginPage() {
         </div>
         <div className="simple-page-changer-container">
           <span>¿Aún no tienes una cuenta?</span>
-          <button type="button" className="btn btn-secondary" id="form-btn">
-            signup
-          </button>
+          <Link to="/signup">
+            <button type="button" className="btn btn-secondary" id="form-btn">
+              signup
+            </button>
+          </Link>
         </div>
-        <Footer />
       </div>
     </>
   );

@@ -11,10 +11,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 
 .logo-empty-space {
-  margin-bottom: 320px;
+  margin-bottom: 100px;
 }
 
 .logo {
