@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*** LOGIN/SIGNUP SECTION ***/
+.all-page-container {
+  width: 100dvw;
+  height: 100dvh;
+
+  background-color: #F7F8FA;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-empty-space {
+  margin-bottom: 320px;
+}
+
+.logo {
+  width: 125px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  margin-top: -7px;
+  animation-name: slideInDown;
+  animation-duration: 1300ms;
+  animation-timing-function: ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translate3d(-50%, -100%, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+    opacity: 1;
+  }
+}
+
+.initial-box {
+  width: 75dvw;
+  height: 70dvh;
+  padding: 25px;
+
+  border: 3px solid #0c6cfc;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.form-container input:hover {
+  box-shadow: 5px 5px 10px #6997fc;
+}
+
+#date-input {
+  width: 200px;
+}
+
+#form-btn {
+  width: 200px;
+}
+
+.simple-page-changer-container {
+  margin-top: 30px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+
+/*** FOOTER SECTION ***/
+.footer-container {
+  margin: 30px;
+  margin-top: 50px;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#github-icon-link {
+  width: 45px;
+}
+
+#linkedin-icon-link {
+  width: 70px;
+}
