@@ -2,8 +2,7 @@
 
 /*** LOGIN/SIGNUP SECTION ***/
 .all-page-container {
-  width: 100dvw;
-  height: 100dvh;
+  margin: 10px;
 
   background-color: #F7F8FA;
 
@@ -44,9 +43,9 @@
 }
 
 .initial-box {
-  width: 75dvw;
-  height: 70dvh;
-  padding: 25px;
+  width: 85dvw;
+  height: 82dvh;
+  padding: 30px;
 
   border: 3px solid #0c6cfc;
   border-radius: 10px;
@@ -54,9 +53,14 @@
 
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
 }
+
+.error-message{
+  color: red;
+  font-weight: bold;
+  text-align: center;
+} 
 
 .form-container {
   display: flex;
@@ -78,7 +82,7 @@
 }
 
 .simple-page-changer-container {
-  margin-top: 30px;
+  margin: 30px 0px;
   
   display: flex;
   flex-direction: column;

@@ -14,6 +14,8 @@ function Signup() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const [errorMessage, setErrorMessage] = useState(null)
+
   const handleNameChange = (e) => setName(e.target.value)
   const handleSurnameChange = (e) => setSurname(e.target.value)
   const handleUsernameChange = (e) => setUsername(e.target.value)
@@ -39,7 +41,12 @@ function Signup() {
      navigate("/login")
 
     } catch (error) {
-      console.log(error) //! PENDIENTE: Redireccionar a una página de error
+      if(error.response.status === 400) {
+        setErrorMessage(error.response.data.errorMessage)
+      } else {
+        console.log(error)
+        // navigate("/error") //! Pendiente de crear una página de error
+      }
     }
   }
 
@@ -50,7 +57,8 @@ function Signup() {
           <img src={Logo} alt="Logo" className="logo" />
         </div>
         <div className="initial-box">
-          <h1>REGISTER</h1>
+          <h1>REGISTER</h1> <br />
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <form className="form-container" onSubmit={handleFormSubmit}>
             <div className="form-floating mb-3">
               <input type="text" className="form-control" placeholder="Name" value={name} onChange={handleNameChange} />
