@@ -13,6 +13,10 @@
   gap: 20px;
 }
 
+#all-page-container-login {
+  height: 100dvh;
+}
+
 .logo-empty-space {
   margin-bottom: 100px;
 }
@@ -54,6 +58,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#initial-box-login {
+  height: 45dvh;
 }
 
 .error-message{
