@@ -47,10 +47,15 @@ function Card (props) {
                 <img src={commentIcon} alt="comment" />
               </button>
             </div>
-            <div className="config-post">
-                <button id="config-post-btn">
+            <div className="config-post dropdown">
+                <button id="config-post-btn" className='btn dropdown-toggle' data-bs-toggle='dropdown'>
                   <img src={dotsConfig} alt="config" />
                 </button>
+                <ul className='dropdown-menu custom-dropdow'>
+                  <li><a className='dropdown-item' href="#"></a>Comments</li>
+                  <li><a className='dropdown-item' href="#"></a>More Details</li>
+                  <li><a className='dropdown-item' href="#"></a>Edit Post</li>
+                </ul>
             </div>
           </div>
       </div>

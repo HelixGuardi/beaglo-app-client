@@ -179,7 +179,7 @@
 
 /*** Card Section ***/
 .post-card-container {
-  border: 2px solid #6997fc;
+  border: 3px solid #6997fc;
   border-radius: 10px;
 
   background-color: #F7F8FA;
@@ -272,6 +272,28 @@
   gap: 10px;
 }
 
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+  /*** Estiliza el menú desplegable ***/
+  .custom-dropdown {
+    background-color: #f8f9fa !important; 
+    border: 1px solid #007bff !important; 
+    border-radius: 8px !important;
+    padding: 0 !important; 
+  }
+
+  .custom-dropdown .dropdown-item {
+    color: #007bff !important;
+    padding: 10px 20px !important;
+  }
+
+  .custom-dropdown .dropdown-item:hover {
+    background-color: #007bff !important;
+    color: #fff !important;
+  }
+
 /*** Navbar Section ***/
 .nav-container {
   position: fixed;
@@ -307,4 +329,59 @@
 
 .nav-container button:hover {
   border: 2px solid #6997fc;
+}
+
+/*** Create Post ***/
+.create-post-container {
+  height: 100dvh;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.basic-title-layout {
+  padding: 10px;
+
+  border: 5px solid #007bff;
+  border-radius: 15px;
+  background-color: #013582;
+  box-shadow: 0 0 10px #333;
+
+  color: #fff;
+}
+
+.general-form-app {
+  height: 65%;
+  padding: 20px;
+
+  border: 3px solid #0c6cfc;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px #333;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 45px;
+}
+
+.general-form-app label {
+  padding: 5px;
+
+  font-weight: bold;
+  font-size: 15px;
+  color: #fff;
+
+  border: 2px solid #0c6cfc;
+  border-radius: 10px;
+  background-color: #013582;
+}
+
+.form-control-btns {
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
