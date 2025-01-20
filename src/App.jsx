@@ -20,10 +20,10 @@ function App() {
 
         {/* rutas privadas */}
         <Route path="/feed" element={ <Private> <FeedPage/> </Private> } />
-        <Route path="/profile/:userId" element={ <ProfilePage/> } />
-        <Route path="/create-post" element={ <CreatePost/> } />
-        <Route path="/posts/edit/:postId" element={ <EditPost/> } />
-        <Route path="/profile/own" element={ <ProfilePage/> } />
+        <Route path="/profile/:userId" element={ <Private> <ProfilePage/> </Private> } />
+        <Route path="/create-post" element={ <Private> <CreatePost/> </Private> } />
+        <Route path="/posts/edit/:postId" element={ <Private> <EditPost/> </Private> } />
+        <Route path="/profile/own" element={ <Private> <ProfilePage/> </Private> } />
 
 
         {/* 404 */}

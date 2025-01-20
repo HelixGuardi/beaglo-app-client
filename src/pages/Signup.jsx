@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo-name-icon-removebg.png";
 import { useState } from "react";
-import axios from "axios";
+import service from "../services/config.services";
 
 function Signup() {
 
@@ -37,14 +37,15 @@ function Signup() {
 
     try {
       
-     await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/signup`, newUser)
-     navigate("/login")
+      //  await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/signup`, newUser)
+      await service.post("/auth/signup", newUser)
+      navigate("/login")
 
     } catch (error) {
+      console.log(error)
       if(error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage)
       } else {
-        console.log(error)
         // navigate("/error") //! Pendiente de crear una página de error
       }
     }

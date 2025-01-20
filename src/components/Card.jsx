@@ -3,14 +3,12 @@ import dislike from "../assets/dislike-btn-icon.png";
 import commentIcon from "../assets/add-comment-icon.webp";
 import dotsConfig from "../assets/dots-confit-icon.png";
 import profileIconPh from "../assets/profile-icon-placeholder.webp";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/auth.context";
-import axios from "axios";
 
 function Card(props) {
   
-  const { eachPost } = props;
+  const { eachPost, username } = props;
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -23,7 +21,7 @@ function Card(props) {
       <div className="post-card-container">
         <header className="post-card-header">
           <img src={profileIconPh} alt="profile icon" id="profile-icon" />
-          <h3 id="user-name-header">USER_NAME</h3>
+          <h3 id="user-name-header">{username}</h3>
         </header>
         <div className="post-card-image">
           <img src={eachPost.image} alt="Img" />

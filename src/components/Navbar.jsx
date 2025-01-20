@@ -46,7 +46,7 @@ function Navbar() {
           </button>
         </Link>
 
-        <Link>
+        <Link to='/profile/own'>
           <button id="profile-icon-btn" className="btn-basic-config">
             <img
               src={profileIcon}

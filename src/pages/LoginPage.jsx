@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo-name-icon-removebg.png";
 import { useContext, useState } from "react";
-import axios from "axios";
 import { AuthContext } from "../context/auth.context";
+import service from "../services/config.services";
 
 function LoginPage() {
 
@@ -28,7 +28,8 @@ function LoginPage() {
 
     try {
       
-      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login`, userCredentials)
+      // const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login`, userCredentials)
+      const response = await service.post("/auth/login", userCredentials)
       console.log("usuario validado", response.data)
 
       //1. almacenamos el token en local storage
