@@ -12,8 +12,8 @@ function AuthWrapper(props) {
 
   const [isAuthenticating, setIsAuthenticating] = useState(true)
 
-  const authenticateUser = async() => { //función para validar el token cuando sea necesario
-    // valida el token y actualiza los estados acorde
+  const authenticateUser = async() => { //función para validar el token cuando sea necesario // valida el token y actualiza los estados acorde
+    setIsAuthenticating(true) // forzar la carga del spinner al momento de validar el token
 
     try {
       

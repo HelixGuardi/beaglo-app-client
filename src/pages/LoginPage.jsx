@@ -31,12 +31,13 @@ function LoginPage() {
       const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login`, userCredentials)
       console.log("usuario validado", response.data)
 
-      //almacenamos el token en local storage
+      //1. almacenamos el token en local storage
       localStorage.setItem("authToken", response.data.authToken)
 
-      // llamamos al backend para validar el token y extraer la info del usuario
+      //2. llamamos al backend para validar el token y extraer la info del usuario
       authenticateUser()
 
+      //3. redireccionar a alguna página privada (puede ser el feed o el profile, por ejemplo)
       navigate("/profile/own")
 
     } catch (error) {
