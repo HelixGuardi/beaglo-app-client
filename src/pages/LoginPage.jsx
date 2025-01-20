@@ -37,7 +37,7 @@ function LoginPage() {
       // llamamos al backend para validar el token y extraer la info del usuario
       authenticateUser()
 
-      navigate("/feed")
+      navigate("/profile/own")
 
     } catch (error) {
       if(error.response.status === 400) {

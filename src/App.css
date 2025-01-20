@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 /*** LOGIN/SIGNUP SECTION ***/
 .all-page-container {
   margin: 10px;
 
-  background-color: #F7F8FA;
+  background-color: #f7f8fa;
 
   display: flex;
   flex-direction: column;
@@ -64,11 +64,11 @@
   height: 45dvh;
 }
 
-.error-message{
+.error-message {
   color: red;
   font-weight: bold;
   text-align: center;
-} 
+}
 
 .form-container {
   display: flex;
@@ -91,14 +91,13 @@
 
 .simple-page-changer-container {
   margin: 30px 0px;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 5px;
 }
-
 
 /*** FOOTER SECTION ***/
 .footer-container {
@@ -129,7 +128,6 @@
   width: 70px;
 }
 
-
 /*** NotFound Page Section (404) ***/
 .not-found-container {
   width: 100dvw;
@@ -144,7 +142,6 @@
   width: 500px;
 }
 
-
 /*** Feed Page Section ***/
 .feed-page-container {
   position: relative;
@@ -153,7 +150,11 @@
 .header-section {
   height: 90px;
 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 95%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0) 95%
+  );
 
   border-radius: 0px 0px 10px 10px;
 
@@ -162,7 +163,7 @@
   align-items: center;
 }
 
-#header-logo{
+#header-logo {
   width: 75px;
   filter: drop-shadow(0px 5px 25px #0c6cfc);
 }
@@ -182,7 +183,7 @@
   border: 3px solid #6997fc;
   border-radius: 10px;
 
-  background-color: #F7F8FA;
+  background-color: #f7f8fa;
 
   display: flex;
   flex-direction: column;
@@ -193,7 +194,11 @@
 .post-card-header {
   padding: 5px;
 
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0) 100%
+  );
   border-radius: 7px;
 
   display: flex;
@@ -235,16 +240,15 @@
   color: #0c6cfc;
   font-weight: bold;
 
-  transition: .3s;
+  transition: 0.3s;
 }
 
 #description-toggle-btn:hover {
-  background-color: #E7E8E9;
+  background-color: #e7e8e9;
   border-radius: 5px;
 }
 
-
-.post-interaction { 
+.post-interaction {
   width: 100%;
 
   border-top: 2px solid #0c6cfc;
@@ -276,23 +280,19 @@
   display: none !important;
 }
 
-  /*** Estiliza el menú desplegable ***/
-  .custom-dropdown {
-    background-color: #f8f9fa !important; 
-    border: 1px solid #007bff !important; 
-    border-radius: 8px !important;
-    padding: 0 !important; 
-  }
+/*** Menú desplegable ***/
+.custom-dropdown button {
+  border: 2px solid #0c6cfc;
+  border-radius: 10px;
+  padding: 7px;
+  width: 90%;
+  text-align: justify;
+}
 
-  .custom-dropdown .dropdown-item {
-    color: #007bff !important;
-    padding: 10px 20px !important;
-  }
-
-  .custom-dropdown .dropdown-item:hover {
-    background-color: #007bff !important;
-    color: #fff !important;
-  }
+.custom-dropdown button:hover {
+  background-color: #013582;
+  color: #fff;
+}
 
 /*** Navbar Section ***/
 .nav-container {
@@ -300,31 +300,31 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 60px; 
-  background-color: #333; 
+  height: 60px;
+  background-color: #333;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.2); 
-  z-index: 3; 
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 -2px 5px rgba(255, 255, 255, 0.2);
+  z-index: 3;
 }
 
 .icon-basic-config {
-  width: 45px; 
+  width: 45px;
 }
 
 .btn-basic-config {
   border: none;
   background: none;
   margin: 0 15px;
-  color: white; 
+  color: white;
   text-decoration: none;
   font-size: 18px;
 }
 
 .nav-container button {
   border-radius: 20px;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .nav-container button:hover {
@@ -382,6 +382,17 @@
 .form-control-btns {
   padding: 10px;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/*** Edit Post ***/
+.edit-post-container {
+  height: 100dvh;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
 }

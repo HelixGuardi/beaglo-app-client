@@ -6,6 +6,7 @@ import NotFoundPage from './pages/NotFoundPage'
 import FeedPage from './pages/FeedPage'
 import ProfilePage from './pages/ProfilePage'
 import CreatePost from './pages/CreatePost'
+import EditPost from './pages/EditPost'
 
 function App() {
 
@@ -17,7 +18,9 @@ function App() {
         <Route path="/feed" element={ <FeedPage/> } />
         <Route path="/profile/:userId" element={ <ProfilePage/> } />
         <Route path="/create-post" element={ <CreatePost/> } />
-
+        <Route path="/posts/edit/:postId" element={ <EditPost/> } />
+        <Route path="/profile/own" element={ <ProfilePage/> } />
+    
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </>

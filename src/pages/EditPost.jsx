@@ -1,42 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { useState } from "react";
-import axios from "axios";
 
-function CreatePost() {
-
-  const navigate = useNavigate()
-
-  const [image, setImage] = useState("")
-  const [location, setLocation] = useState("")
-  const [description, setDescription] = useState("")
-
-  const handleImageChange = (e) => {e.target.value}
-  const handleLocationChange = (e) => {e.target.value}
-  const handleDescriptionChange = (e) => {e.target.value}
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-
-    const newPost = {
-      image: image,
-      location: location,
-      description: description
-    }
-
-    axios.post(`${import.meta.env.VITE_SERVER_URL}/api/posts/create-post`, newPost)
-    .then(() => {
-      navigate("/feed")
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
-  
-  return (
-    <div className="create-post-container">
-      <h1 className="basic-title-layout">Create your Post</h1>
-      <form className="general-form-app">
+function EditPost() {
+  return(
+    <>
+      <div className="edit-post-container">
+        <h1 className="basic-title-layout">Edit your Post</h1>
+        <form className="general-form-app">
         <div className="mb-3">
           <label htmlFor="formFile" className="form-label">
             ¡Sube aqui la imagen que deseas compartir!
@@ -73,7 +43,7 @@ function CreatePost() {
         </div>
         <div className="form-control-btns">
           <button type="submit" className="btn btn-outline-success">
-            ¡Create!
+            Edit
           </button>
           <Link to="/feed">
             <button type="button" className="btn btn-outline-danger">
@@ -83,8 +53,9 @@ function CreatePost() {
         </div>
       </form>
       <Navbar/>
-    </div>
-  );
+      </div>
+    </>
+  )
 }
 
-export default CreatePost;
+export default EditPost;
