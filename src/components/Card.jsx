@@ -5,16 +5,28 @@ import dotsConfig from "../assets/dots-confit-icon.png";
 import profileIconPh from "../assets/profile-icon-placeholder.webp";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import service from "../services/config.services";
 
 function Card(props) {
-  
-  const { eachPost, username } = props;
+  const { eachPost, username, getData } = props;
 
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
   };
+
+  const handleDeletePost = async() => {
+    try {
+      await service.delete(`/posts/${eachPost._id}`)
+
+      // función para actualizar el estado local del componente padre
+      getData()
+
+    } catch(error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
@@ -40,13 +52,13 @@ function Card(props) {
         </div>
         <div className="post-interaction">
           <div className="main-post-btn">
-            <button id="like-btn">
+            <button id="like-btn" className="toggle-menu-btns-config">
               <img src={like} alt="like" />
             </button>
-            <button id="dislike-btn">
+            <button id="dislike-btn" className="toggle-menu-btns-config">
               <img src={dislike} alt="dislike" />
             </button>
-            <button id="comment-btn">
+            <button id="comment-btn" className="toggle-menu-btns-config">
               <img src={commentIcon} alt="comment" />
             </button>
           </div>
@@ -59,9 +71,14 @@ function Card(props) {
               <img src={dotsConfig} alt="config" />
             </button>
             <ul className="dropdown-menu custom-dropdown">
-              <Link>
-                <button className="dropdwon-item">More Details</button>
-              </Link>
+              <button
+                type="button"
+                className="btn btn-primary dropdown-item"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop"
+              >
+                Delete Post
+              </button>
               <Link to={`/posts/edit/${eachPost._id}`}>
                 <button className="dropdwon-item">Edit Post</button>
               </Link>
@@ -69,6 +86,44 @@ function Card(props) {
                 <button className="dropdwon-item">Report Issue</button>
               </Link>
             </ul>
+            {/* <!-- Modal --> */}
+          </div>
+          <div
+            className="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="staticBackdropLabel">
+                    ¿Are you sure?
+                  </h1>
+                  <button
+                    type="button"
+                    className="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div className="modal-body">...</div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button className="btn btn-danger" onClick={handleDeletePost} data-bs-dismiss="modal" >
+                    DELETE
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

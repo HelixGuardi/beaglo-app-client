@@ -263,9 +263,12 @@
 
 .post-interaction button {
   margin: 5px;
-  background: none;
   border-radius: 15px;
   border: none;
+}
+
+.toggle-menu-btns-config {
+  background: none;
 }
 
 .post-interaction button img {
@@ -391,11 +394,29 @@
 .edit-post-container {
   height: 100dvh;
   padding: 10px;
+  padding-bottom: 70px;
 
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.no-edit-parts-post {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.no-edit-parts-post img{
+  width: 225px;
+}
+
+.no-edit-parts-post span {
+  font-weight: bold;
 }
 
 /*** Profile Page ***/

@@ -34,9 +34,9 @@ function PostList () {
   return (
     <>
       <div className="posts-list-container">
-        {postsCard.map((eachPost) => {
+        {postsCard.map((eachPost, i) => {
           return(
-            <Card key={eachPost._id} eachPost={eachPost}/>
+            <Card key={eachPost._id} eachPost={eachPost} username={eachPost.userCreator.username} getData={getData}/>
           )
         })}
       </div>
