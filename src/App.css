@@ -448,6 +448,7 @@
 }
 
 .all-user-posts {
+  padding-bottom: 70px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

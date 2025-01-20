@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
 import axios from "axios";
+import service from "../services/config.services";
 
 function CreatePost() {
 
@@ -11,11 +12,11 @@ function CreatePost() {
   const [location, setLocation] = useState("")
   const [description, setDescription] = useState("")
 
-  const handleImageChange = (e) => {e.target.value}
-  const handleLocationChange = (e) => {e.target.value}
-  const handleDescriptionChange = (e) => {e.target.value}
+  const handleImageChange = (e) => setImage(e.target.value)
+  const handleLocationChange = (e) => setLocation(e.target.value)
+  const handleDescriptionChange = (e) => setDescription(e.target.value)
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async(e) => {
     e.preventDefault();
 
     const newPost = {
@@ -24,24 +25,26 @@ function CreatePost() {
       description: description
     }
 
-    axios.post(`${import.meta.env.VITE_SERVER_URL}/api/posts/create-post`, newPost)
-    .then(() => {
-      navigate("/feed")
-    })
-    .catch((error) => {
+    try {
+
+     await service.post("/posts/create-post", newPost)
+     navigate("/feed")
+      
+    } catch (error) {
       console.log(error)
-    })
+    }
+    
   }
   
   return (
     <div className="create-post-container">
       <h1 className="basic-title-layout">Create your Post</h1>
-      <form className="general-form-app">
+      <form className="general-form-app" onSubmit={handleFormSubmit}>
         <div className="mb-3">
           <label htmlFor="formFile" className="form-label">
             ¡Sube aqui la imagen que deseas compartir!
           </label>
-          <input className="form-control" type="file" id="formFile" />
+          <input className="form-control" type="file" id="formFile" value={image} onChange={handleImageChange}/>
         </div>
         <div className="location-input-container">
           <label htmlFor="exampleDataList" className="form-label">
@@ -52,6 +55,8 @@ function CreatePost() {
             list="datalistOptions"
             id="exampleDataList"
             placeholder="Type to search..."
+            value={location}
+            onChange={handleLocationChange}
           />
           <datalist id="datalistOptions">
             <option value="Mallorca, España" />
@@ -69,6 +74,8 @@ function CreatePost() {
             className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
+            value={description}
+            onChange={handleDescriptionChange}
           ></textarea>
         </div>
         <div className="form-control-btns">
