@@ -4,16 +4,14 @@ import { useNavigate } from "react-router-dom";
 import service from "../services/config.services";
 import profileIconPh from "../assets/profile-icon-degrade-blue-color.png";
 import Navbar from "../components/Navbar";
-import Card from "../components/Card";
+import PostList from "../components/PostList";
 
 function ProfilePage() {
   const { authenticateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [user, setUser] = useState("");
-  const [posts,setPosts] = useState([])
-  console.log("usuario",user)
-  console.log("publicaciones",posts)
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     getData();
@@ -21,17 +19,16 @@ function ProfilePage() {
 
   const getData = async () => {
     try {
-      const response = await service.get("/users/own");
-      const postResponse = await service.get("/posts/own")
+      const userResponse = await service.get("/users/own");
+      const postResponse = await service.get("/posts");
 
       // console.log("aqui tienes amigo, todo fino",response.data)
-      setUser(response.data);
-      setPosts(postResponse.data)
+      setUser(userResponse.data);
+      setPosts(postResponse.data);
     } catch (error) {
       console.log(error);
     }
   };
-
 
   const handleLogout = (event) => {
     event.preventDefault();
@@ -72,9 +69,7 @@ function ProfilePage() {
           </div>
         </header>
         <section className="all-user-posts">
-          {posts.map((eachPost) => {
-            return <Card id="eachPost._id" eachPost={eachPost} username={user.username}/>
-          })}
+          <PostList postsCard={posts} getData={getData} />
         </section>
         <div className="nav-section">
           <Navbar />

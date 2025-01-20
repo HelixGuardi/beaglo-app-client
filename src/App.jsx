@@ -8,6 +8,7 @@ import ProfilePage from './pages/ProfilePage'
 import CreatePost from './pages/CreatePost'
 import EditPost from './pages/EditPost'
 import Private from './components/auth/Private'
+import CommentsPage from './pages/CommentsPage'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/create-post" element={ <Private> <CreatePost/> </Private> } />
         <Route path="/posts/edit/:postId" element={ <Private> <EditPost/> </Private> } />
         <Route path="/profile/own" element={ <Private> <ProfilePage/> </Private> } />
+        <Route path="/feed/:postId" element={ <Private> <CommentsPage/> </Private> } />
 
 
         {/* 404 */}

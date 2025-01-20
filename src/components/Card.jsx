@@ -5,10 +5,11 @@ import dotsConfig from "../assets/dots-confit-icon.png";
 import profileIconPh from "../assets/profile-icon-placeholder.webp";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import service from "../services/config.services";
 
 function Card(props) {
-  const { eachPost, username, getData } = props;
+  const { eachPost, setPostToDelete } = props;
+  // console.log(eachPost)
+  // console.log(getData)
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -16,24 +17,12 @@ function Card(props) {
     setIsExpanded(!isExpanded);
   };
 
-  const handleDeletePost = async() => {
-    try {
-      await service.delete(`/posts/${eachPost._id}`)
-
-      // función para actualizar el estado local del componente padre
-      getData()
-
-    } catch(error) {
-      console.log(error)
-    }
-  }
-
   return (
     <>
       <div className="post-card-container">
         <header className="post-card-header">
           <img src={profileIconPh} alt="profile icon" id="profile-icon" />
-          <h3 id="user-name-header">{username}</h3>
+          <h3 id="user-name-header">{eachPost.userCreator.username}</h3>
         </header>
         <div className="post-card-image">
           <img src={eachPost.image} alt="Img" />
@@ -76,6 +65,7 @@ function Card(props) {
                 className="btn btn-primary dropdown-item"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"
+                onClick={() => setPostToDelete(eachPost._id)}
               >
                 Delete Post
               </button>
@@ -86,44 +76,6 @@ function Card(props) {
                 <button className="dropdwon-item">Report Issue</button>
               </Link>
             </ul>
-            {/* <!-- Modal --> */}
-          </div>
-          <div
-            className="modal fade"
-            id="staticBackdrop"
-            data-bs-backdrop="static"
-            data-bs-keyboard="false"
-            aria-labelledby="staticBackdropLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                    ¿Are you sure?
-                  </h1>
-                  <button
-                    type="button"
-                    className="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div className="modal-body">...</div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button className="btn btn-danger" onClick={handleDeletePost} data-bs-dismiss="modal" >
-                    DELETE
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
