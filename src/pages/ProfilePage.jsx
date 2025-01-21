@@ -21,10 +21,9 @@ function ProfilePage() {
     try {
       const userResponse = await service.get("/users/own");
       const postResponse = await service.get("/posts/own");
-
-      // console.log("aqui tienes amigo, todo fino",response.data)
       setUser(userResponse.data);
       setPosts(postResponse.data);
+
     } catch (error) {
       console.log(error);
     }
@@ -42,6 +41,8 @@ function ProfilePage() {
     //3. redireccionamos al usuario a alguna página publica
     navigate("/login");
   };
+
+
   return (
     <>
       <div className="profile-container">
@@ -71,7 +72,7 @@ function ProfilePage() {
           </div>
         </header>
         <section className="all-user-posts">
-          <PostList postsCard={posts} getData={getData} />
+          <PostList postsCard={posts} getData={getData}/>
         </section>
         <div className="nav-section">
           <Navbar />

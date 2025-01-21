@@ -8,8 +8,6 @@ import { Link } from "react-router-dom";
 
 function Card(props) {
   const { eachPost, setPostToDelete } = props;
-  // console.log(eachPost)
-  // console.log(getData)
 
   const [isExpanded, setIsExpanded] = useState(false);
 
