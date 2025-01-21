@@ -47,9 +47,11 @@ function Card(props) {
             <button id="dislike-btn" className="toggle-menu-btns-config">
               <img src={dislike} alt="dislike" />
             </button>
-            <button id="comment-btn" className="toggle-menu-btns-config">
-              <img src={commentIcon} alt="comment" />
-            </button>
+            <Link to={`/feed/${eachPost._id}`}>
+              <button id="comment-btn" className="toggle-menu-btns-config">
+                <img src={commentIcon} alt="comment" />
+              </button>
+            </Link>
           </div>
           <div className="config-post dropdown">
             <button

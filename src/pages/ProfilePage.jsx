@@ -20,7 +20,7 @@ function ProfilePage() {
   const getData = async () => {
     try {
       const userResponse = await service.get("/users/own");
-      const postResponse = await service.get("/posts");
+      const postResponse = await service.get("/posts/own");
 
       // console.log("aqui tienes amigo, todo fino",response.data)
       setUser(userResponse.data);

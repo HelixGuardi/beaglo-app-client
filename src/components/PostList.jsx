@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Card from "./Card";
 import service from "../services/config.services";
+import { HashLoader } from "react-spinners";
 
 function PostList(props) {
   const { postsCard, getData } = props;
@@ -19,11 +20,10 @@ function PostList(props) {
     }
   };
 
-  //! cambiar a clausula de loading normal
   if (postsCard.length === 0) {
     return (
       <div className="loading-container">
-        <p>Loading...</p>
+        <HashLoader color="#6997fc"/>
       </div>
     );
   }
