@@ -148,6 +148,7 @@
 }
 
 .header-section {
+  position: relative;
   height: 90px;
 
   background: linear-gradient(
@@ -185,6 +186,7 @@
   border-radius: 10px;
 
   background-color: #f7f8fa;
+  box-shadow: 0px 0px 10px #888;
 
   display: flex;
   flex-direction: column;
@@ -480,8 +482,83 @@
 
 /*** Comments Page ***/
 .comment-page-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+#back-icon-btn {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+}
+
+#back-icon-img {
+  width: 35px;
+  filter: drop-shadow(0px 0px 5px #6997fc);
+}
+
+.comments-list {
+  padding: 20px;
+  padding-bottom: 165px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comment-container {
+  padding: 10px;
+
+  border: 3px solid #013582;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #555 ;
+}
+
+#comment-content-p {
+  font-weight: bold;
+}
+
+#comment-user-p {
+  color:#777;
+}
+
+.floating-comment-input-container {
+  width: 100%;
+  position: fixed;
+  bottom: 55px;
+  z-index: 3;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0) 100%
+    );
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-input {
+  border: 5px solid #6997fc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 25px #013582;
+}
+
+#submit-comment-btn {
+  padding: 15px;
+  margin-bottom: 13px;
+  box-shadow: 0px 0px 20px #0c6cfc;
+}
+
+.form-comment-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 

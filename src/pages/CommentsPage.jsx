@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Logo from "../assets/logo-name-icon-removebg.png";
 import profileIconPh from "../assets/profile-icon-placeholder.webp";
@@ -9,22 +9,41 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import service from "../services/config.services";
 import { HashLoader } from "react-spinners";
+import backIcon from "../assets/back-icon-btn.png";
 
 function CommentsPage() {
+  const navigate = useNavigate();
+
   const dynamicParams = useParams();
   const [post, setPost] = useState(null);
+  const [comments, setComments] = useState([]);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [content, setContent] = useState("");
+
 
   useEffect(() => {
-    service
-      .get(`/posts/${dynamicParams.postId}`)
-      .then((response) => {
-        setPost(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    getData()
   }, [dynamicParams.postId]);
+
+  const getData = () => {
+    service
+    .get(`/posts/${dynamicParams.postId}`)
+    .then((response) => {
+      setPost(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+  service
+    .get(`/comments/posts/${dynamicParams.postId}`)
+    .then((response) => {
+      setComments(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
@@ -38,9 +57,32 @@ function CommentsPage() {
     );
   }
 
+  const handleComment = (e) => {
+    setContent(e.target.value);
+  };
+
+  const handleFormSubmit = async(e) => {
+    e.preventDefault();
+
+    const newComment = {
+      content: content
+    }
+
+    try {
+      await service.post(`/comments/posts/${dynamicParams.postId}`, newComment)
+      getData()
+      setContent("")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <header className="header-section">
+        <button onClick={() => navigate(-1)} id="back-icon-btn">
+          <img src={backIcon} alt="back" id="back-icon-img" />
+        </button>
         <img src={Logo} alt="logo" id="header-logo" />
       </header>
       <div className="comment-page-container">
@@ -98,6 +140,38 @@ function CommentsPage() {
               </ul>
             </div>
           </div>
+        </div>
+        <div className="comments-list">
+          {comments.map((eachComment) => {
+            return (
+              <div className="comment-container" key={eachComment._id}>
+                <span id="comment-content-p">{eachComment.content}</span>
+                <p id="comment-user-p">{eachComment.user.username}</p>
+              </div>
+            );
+          })}
+        </div>
+        <div className="floating-comment-input-container">
+          <form className="form-comment-control" onSubmit={handleFormSubmit}>
+            <div className="form-floating mb-3 custom-input">
+              <input
+                type="text"
+                className="form-control"
+                id="floatingInput"
+                placeholder="Your comment here..."
+                value={content}
+                onChange={handleComment}
+              />
+              <label forHTML="floatingInput">Your comment here...</label>
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary"
+              id="submit-comment-btn"
+            >
+              Comment
+            </button>
+          </form>
         </div>
         <Navbar />
       </div>
