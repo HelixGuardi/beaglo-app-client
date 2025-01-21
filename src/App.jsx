@@ -18,7 +18,7 @@ function App() {
       <Routes>
         {/* rutas publicas */}
         <Route path="/signup" element={ <Signup /> }/>
-        <Route path="/login" element={ <LoginPage/> }/>ç
+        <Route path="/login" element={ <LoginPage/> }/>
 
         {/* rutas privadas */}
         <Route path="/feed" element={ <Private> <FeedPage/> </Private> } />

@@ -405,7 +405,7 @@
 }
 
 .no-edit-parts-post {
-  overflow: hidden;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -415,6 +415,7 @@
 
 .no-edit-parts-post img{
   width: 225px;
+  border-radius: 10px;
 }
 
 .no-edit-parts-post span {

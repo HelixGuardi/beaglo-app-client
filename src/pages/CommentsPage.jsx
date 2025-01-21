@@ -6,13 +6,16 @@ import like from "../assets/like-btn-icon.png";
 import dislike from "../assets/dislike-btn-icon.png";
 import dotsConfig from "../assets/dots-confit-icon.png";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import service from "../services/config.services";
 import { HashLoader } from "react-spinners";
 import backIcon from "../assets/back-icon-btn.png";
+import { AuthContext } from "../context/auth.context";
 
 function CommentsPage() {
   const navigate = useNavigate();
+
+  const { loggedUserId } = useContext(AuthContext)
 
   const dynamicParams = useParams();
   const [post, setPost] = useState(null);
@@ -37,6 +40,7 @@ function CommentsPage() {
     service
       .get(`/comments/posts/${dynamicParams.postId}`)
       .then((response) => {
+        console.log(response.data)
         setComments(response.data);
       })
       .catch((error) => {
@@ -133,10 +137,12 @@ function CommentsPage() {
                 <img src={dotsConfig} alt="options" />
               </button>
               <ul className="dropdown-menu custom-dropdown">
-                <Link to={`/posts/edit/:postId`}>
+              {post.userCreator._id === loggedUserId 
+              ? <Link to={`/posts/edit/${post._id}`}>
                   <button className="dropdown-item">Edit Post</button>
                 </Link>
-                <button className="dropdwon-item">Report Issue</button>
+              :   <button className="dropdwon-item">Report Issue</button>
+              }
               </ul>
             </div>
           </div>
@@ -162,7 +168,8 @@ function CommentsPage() {
                     />
                   </button>
                   <ul className="dropdown-menu custom-dropdown">
-                    <button
+                  {eachComment.user._id === loggedUserId 
+                  ?  <button
                       type="button"
                       className="btn btn-primary dropdown-item"
                       data-bs-toggle="modal"
@@ -171,7 +178,8 @@ function CommentsPage() {
                     >
                       Delete Comment
                     </button>
-                    <button className="dropdwon-item">Report Issue</button>
+                  : <button className="dropdwon-item">Report Issue</button>
+                  }
                   </ul>
                 </div>
               </div>

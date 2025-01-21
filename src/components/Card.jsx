@@ -3,11 +3,15 @@ import dislike from "../assets/dislike-btn-icon.png";
 import commentIcon from "../assets/add-comment-icon.webp";
 import dotsConfig from "../assets/dots-confit-icon.png";
 import profileIconPh from "../assets/profile-icon-placeholder.webp";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
 
 function Card(props) {
   const { eachPost, setPostToDelete } = props;
+  // console.log(eachPost.userCreator._id)
+
+  const { loggedUserId } = useContext(AuthContext)
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -60,7 +64,9 @@ function Card(props) {
               <img src={dotsConfig} alt="config" />
             </button>
             <ul className="dropdown-menu custom-dropdown">
-              <button
+            {eachPost.userCreator._id === loggedUserId 
+            ? <div>
+               <button
                 type="button"
                 className="btn btn-primary dropdown-item"
                 data-bs-toggle="modal"
@@ -72,9 +78,9 @@ function Card(props) {
               <Link to={`/posts/edit/${eachPost._id}`}>
                 <button className="dropdwon-item">Edit Post</button>
               </Link>
-              <Link>
-                <button className="dropdwon-item">Report Issue</button>
-              </Link>
+            </div>
+            : <button className="dropdwon-item">Report Issue</button>
+            }
             </ul>
           </div>
         </div>

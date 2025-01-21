@@ -8,10 +8,8 @@ function EditPost() {
   const navigate = useNavigate()
 
   const dynamicParams = useParams();
-  console.log(dynamicParams)
 
   const [post, setPost] = useState("")
-  console.log(post)
 
   const [description, setDescription] = useState(post.description)
   const handleDescriptionChange = (e) => setDescription(e.target.value)
@@ -68,6 +66,7 @@ function EditPost() {
             className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
+            placeholder="Cambia la descripción de post"
             value={description}
             onChange={handleDescriptionChange}
           ></textarea>
