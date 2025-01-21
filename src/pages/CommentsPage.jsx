@@ -20,30 +20,29 @@ function CommentsPage() {
   const [isExpanded, setIsExpanded] = useState(false);
   const [content, setContent] = useState("");
 
-
   useEffect(() => {
-    getData()
+    getData();
   }, [dynamicParams.postId]);
 
   const getData = () => {
     service
-    .get(`/posts/${dynamicParams.postId}`)
-    .then((response) => {
-      setPost(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .get(`/posts/${dynamicParams.postId}`)
+      .then((response) => {
+        setPost(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
-  service
-    .get(`/comments/posts/${dynamicParams.postId}`)
-    .then((response) => {
-      setComments(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  }
+    service
+      .get(`/comments/posts/${dynamicParams.postId}`)
+      .then((response) => {
+        setComments(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
@@ -61,17 +60,27 @@ function CommentsPage() {
     setContent(e.target.value);
   };
 
-  const handleFormSubmit = async(e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
     const newComment = {
-      content: content
-    }
+      content: content,
+    };
 
     try {
-      await service.post(`/comments/posts/${dynamicParams.postId}`, newComment)
-      getData()
-      setContent("")
+      await service.post(`/comments/posts/${dynamicParams.postId}`, newComment);
+      getData();
+      setContent("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteComment = async(commentId) => {
+    try {
+      await service.delete(`/comments/${commentId}`);
+      getData();
+
     } catch (error) {
       console.log(error)
     }
@@ -124,15 +133,6 @@ function CommentsPage() {
                 <img src={dotsConfig} alt="options" />
               </button>
               <ul className="dropdown-menu custom-dropdown">
-                <button
-                  type="button"
-                  className="btn btn-primary dropdown-item"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
-                  onClick={() => setPostToDelete()}
-                >
-                  Delete Post
-                </button>
                 <Link to={`/posts/edit/:postId`}>
                   <button className="dropdown-item">Edit Post</button>
                 </Link>
@@ -145,8 +145,35 @@ function CommentsPage() {
           {comments.map((eachComment) => {
             return (
               <div className="comment-container" key={eachComment._id}>
+              <div>
                 <span id="comment-content-p">{eachComment.content}</span>
                 <p id="comment-user-p">{eachComment.user.username}</p>
+              </div>
+                <div className="config-post dropdown">
+                  <button
+                    id="config-post-btn"
+                    className="btn dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                  >
+                    <img
+                      src={dotsConfig}
+                      alt="options"
+                      id="comment-config-icon"
+                    />
+                  </button>
+                  <ul className="dropdown-menu custom-dropdown">
+                    <button
+                      type="button"
+                      className="btn btn-primary dropdown-item"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                      onClick={() => deleteComment(eachComment._id)}
+                    >
+                      Delete Comment
+                    </button>
+                    <button className="dropdwon-item">Report Issue</button>
+                  </ul>
+                </div>
               </div>
             );
           })}

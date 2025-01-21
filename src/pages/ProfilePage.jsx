@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import service from "../services/config.services";
 import profileIconPh from "../assets/profile-icon-degrade-blue-color.png";
 import Navbar from "../components/Navbar";
@@ -56,9 +56,11 @@ function ProfilePage() {
             {user.name} {user.surname}
           </h3>
           <div className="profile-header-btns">
+          <Link to="/profile/edit">
             <button type="button" className="btn btn-primary">
               Edit Profile
             </button>
+          </Link>
             <button
               type="button"
               className="btn btn-danger"
