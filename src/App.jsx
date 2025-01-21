@@ -10,6 +10,7 @@ import EditPost from './pages/EditPost'
 import Private from './components/auth/Private'
 import CommentsPage from './pages/CommentsPage'
 import EditProfilePage from './pages/EditProfilePage'
+import HomePage from './pages/HomePage'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
     <>
       <Routes>
         {/* rutas publicas */}
+        <Route path="/" element={ <HomePage/> }/>
         <Route path="/signup" element={ <Signup /> }/>
         <Route path="/login" element={ <LoginPage/> }/>
 

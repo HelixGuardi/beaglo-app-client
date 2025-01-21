@@ -30,7 +30,6 @@ function LoginPage() {
       
       // const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/login`, userCredentials)
       const response = await service.post("/auth/login", userCredentials)
-      console.log("usuario validado", response.data)
 
       //1. almacenamos el token en local storage
       localStorage.setItem("authToken", response.data.authToken)
