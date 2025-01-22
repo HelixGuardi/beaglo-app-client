@@ -11,6 +11,8 @@ import Private from './components/auth/Private'
 import CommentsPage from './pages/CommentsPage'
 import EditProfilePage from './pages/EditProfilePage'
 import HomePage from './pages/HomePage'
+import SearchPage from './pages/SearchPage'
+import UsersProfilePage from './pages/UsersProfilePage'
 
 function App() {
 
@@ -28,7 +30,9 @@ function App() {
         <Route path="/posts/edit/:postId" element={ <Private> <EditPost/> </Private> } />
         <Route path="/profile/own" element={ <Private> <ProfilePage/> </Private> } />
         <Route path="/feed/:postId" element={ <Private> <CommentsPage/> </Private> } />
-        <Route path="/profile/edit" element={ <Private> <EditProfilePage/> </Private> } /> 
+        <Route path="/profile/edit" element={ <Private> <EditProfilePage/> </Private> } />
+        <Route path="/search" element={ <Private> <SearchPage/> </Private> } />
+        <Route path="/profile/:userId/:userName" element={ <Private> <UsersProfilePage/> </Private> } />
 
 
         {/* 404 */}

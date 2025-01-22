@@ -647,3 +647,51 @@
   align-items: center;
 }
 
+
+/*** Search Page ***/
+.search-container {
+  height: 100dvh;
+  padding: 10px;
+}
+
+.search-bar-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#magnifying-glass-btn {
+  background: none;
+  border: none;
+}
+
+#magnifying-glass-icon {
+  width: 55px;
+}
+
+#search-input {
+  width: 75%;
+  padding: 7px;
+
+  border: 3px solid #007bff;
+  border-radius: 10px;
+}
+
+#search-results {
+  padding: 10px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+#search-results-p {
+  padding: 10px;
+  margin: 5px;
+  font-size: 17px;
+  color:#fff;
+
+  border: 3px solid #007bff;
+  border-radius: 10px;
+  background-color: #013582;
+  box-shadow: 5px 5px 10px #333;
+}

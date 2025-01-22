@@ -36,7 +36,7 @@ function Navbar() {
           </button>
         </Link>
 
-        <Link>
+        <Link to="/search">
           <button id="maginifying-glass-icon-btn" className="btn-basic-config">
             <img
               src={magnifyingGlassIcon}
