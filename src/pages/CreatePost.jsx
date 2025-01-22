@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
 import service from "../services/config.services";
+import Cloudinary from "../components/Cloudinary";
 
 function CreatePost() {
 
@@ -11,7 +12,6 @@ function CreatePost() {
   const [location, setLocation] = useState("")
   const [description, setDescription] = useState("")
 
-  const handleImageChange = (e) => setImage(e.target.value)
   const handleLocationChange = (e) => setLocation(e.target.value)
   const handleDescriptionChange = (e) => setDescription(e.target.value)
 
@@ -39,12 +39,9 @@ function CreatePost() {
     <div className="create-post-container">
       <h1 className="basic-title-layout">Create your Post</h1>
       <form className="general-form-app" onSubmit={handleFormSubmit}>
-        <div className="mb-3">
-          <label htmlFor="formFile" className="form-label">
-            ¡Sube aqui la imagen que deseas compartir!
-          </label>
-          <input className="form-control" type="file" id="formFile" value={image} onChange={handleImageChange}/>
-        </div>
+
+        <Cloudinary setImage={setImage} image={image} />
+
         <div className="location-input-container">
           <label htmlFor="exampleDataList" className="form-label">
             Localización:
