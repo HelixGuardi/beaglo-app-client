@@ -32,6 +32,13 @@
   width: 350px;
 }
 
+.footer-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*** LOGIN/SIGNUP SECTION ***/
 .all-page-container {
   margin: 10px;

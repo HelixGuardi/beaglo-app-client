@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/Logo-removebg.png";
-import Footer from '../components/Footer'
+import Footer from "../components/Footer";
 
 function HomePage() {
   return (
@@ -45,19 +45,21 @@ function HomePage() {
           <h2>Haz parte de la familia de viajeros de Beaglo</h2>
           <h3>Y conectate con el mundo</h3>
           <div class="d-grid gap-2 col-6 mx-auto">
-          <Link to="/login">
-            <button class="btn btn-outline-light" type="button">
-              Login
-            </button>
-          </Link>
-          <Link to="/signup">
-            <button class="btn btn-outline-light" type="button">
-              Signup
-            </button>
-          </Link>
+            <Link to="/login">
+              <button class="btn btn-outline-light" type="button">
+                Login
+              </button>
+            </Link>
+            <Link to="/signup">
+              <button class="btn btn-outline-light" type="button">
+                Signup
+              </button>
+            </Link>
           </div>
         </section>
-        <Footer/>
+        <div className="footer-section">
+          <Footer />
+        </div>
       </div>
     </>
   );
