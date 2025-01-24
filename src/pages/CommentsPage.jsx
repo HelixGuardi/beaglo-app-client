@@ -40,7 +40,6 @@ function CommentsPage() {
     service
       .get(`/comments/posts/${dynamicParams.postId}`)
       .then((response) => {
-        // console.log(response.data)
         setComments(response.data);
       })
       .catch((error) => {

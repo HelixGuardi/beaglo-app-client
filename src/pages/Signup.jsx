@@ -37,7 +37,6 @@ function Signup() {
 
     try {
       
-      //  await axios.post(`${import.meta.env.VITE_SERVER_URL}/api/auth/signup`, newUser)
       await service.post("/auth/signup", newUser)
       navigate("/login")
 

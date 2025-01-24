@@ -9,7 +9,6 @@ import { AuthContext } from "../context/auth.context";
 
 function Card(props) {
   const { eachPost, setPostToDelete } = props;
-  // console.log(eachPost.userCreator._id)
 
   const { loggedUserId } = useContext(AuthContext)
 

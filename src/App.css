@@ -381,6 +381,7 @@
 .create-post-container {
   height: 100dvh;
   padding: 10px;
+  padding-bottom: 70px;
 
   display: flex;
   flex-direction: column;

@@ -5,8 +5,8 @@ const Cloudinary = (props) => {
 
   const { setImage, image } = props;
 
-   const preset_name = "beaglo_preset"
-   const cloud_name = "dwuey8hq9"                         
+   const preset_name = "beaglo_preset" //nombre temporario para presentación del proyecto (más tarde se cambiará)
+   const cloud_name = "dwuey8hq9"  //nombre temporario para presentación del proyecto (más tarde se cambiará)                      
 
     //const [ image, setImage ] = useState('');       
     const [ loading, setLoading ] = useState(false) 

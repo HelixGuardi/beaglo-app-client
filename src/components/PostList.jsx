@@ -11,7 +11,6 @@ function PostList(props) {
   const deletePost = async () => {
     try {
       await service.delete(`/posts/${postToDelete}`);
-      // console.log(`borrando`, postToDelete );
 
       // función para actualizar el estado local del componente padre
       getData();
