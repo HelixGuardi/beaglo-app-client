@@ -51,7 +51,7 @@ const Cloudinary = (props) => {
         {loading ? (
             <h3>Loading...</h3>
         ) : (
-        <img src={image} alt="imagen subida" width={"80%"}/>
+        <img src={image} alt="imagen subida" width={"50%"}/>
         )}
     </div>
   );
