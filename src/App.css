@@ -702,3 +702,25 @@
   background-color: #013582;
   box-shadow: 5px 5px 10px #333;
 }
+
+
+
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .post-card-container {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .post-card-container {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1441px) {
+  .post-card-container {
+    width: 600px;
+  }
+}
