@@ -59,12 +59,12 @@ Beaglo es una red social para viajeros, creada para compartir experiencias, cone
 | `/login`                   | Login               |                      | Anon Only `<IsAnon>`       | Formulario de login, redirige al feed.          |
 | `/feed`                    | FeedPage            | PostList, Card       | Private Only `<IsPrivate>` | Muestra todas las publicaciones del feed.       |
 | `/create-post`             | CreatePost          |                      | Private Only `<IsPrivate>` | Permite crear nuevas publicaciones.             |
-| `/edit-post/:postId`       | EditPost            |                      | Private Only `<IsPrivate>` | Permite editar una publicación específica.      |
-| `/profile`                 | ProfilePage         |                      | Private Only `<IsPrivate>` | Página del perfil del usuario actual.           |
-| `/edit-profile`            | EditProfilePage     |                      | Private Only `<IsPrivate>` | Permite editar el perfil del usuario actual.    |
-| `/users/:userId`           | UsersProfilePage    |                      | Private Only `<IsPrivate>` | Permite ver el perfil de otro usuario.          |
+| `/posts/edit/:postId`       | EditPost            |                      | Private Only `<IsPrivate>` | Permite editar una publicación específica.      |
+| `/profile/own`                 | ProfilePage         |                      | Private Only `<IsPrivate>` | Página del perfil del usuario actual.           |
+| `/profile/edit`            | EditProfilePage     |                      | Private Only `<IsPrivate>` | Permite editar el perfil del usuario actual.    |
+| `/profile/:userId/:userName`           | UsersProfilePage    |                      | Private Only `<IsPrivate>` | Permite ver el perfil de otro usuario.          |
 | `/search`                  | SearchPage          |                      | Private Only `<IsPrivate>` | Página para buscar publicaciones o usuarios.    |
-| `/comments/:postId`        | CommentsPage        |                      | Private Only `<IsPrivate>` | Permite ver y agregar comentarios.              |
+| `/feed/:postId`        | CommentsPage        |                      | Private Only `<IsPrivate>` | Permite ver y agregar comentarios.              |
 | `*`                        | NotFoundPage        |                      | Public                     | Página 404 para rutas inexistentes.             |
 
 ---
