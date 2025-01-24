@@ -1,6 +1,6 @@
 # Beaglo
 
-[![App Logo](./logo.png)](https://beaglo.netlify.app/)  
+[![App Logo](./src/assets/Logo-dark-removebg.png)](https://beaglo.netlify.app/)  
 **[¡Mira la App!](https://beaglo.netlify.app/)**
 
 ### Description
