@@ -67,7 +67,6 @@
 
 /*** LOGIN/SIGNUP SECTION ***/
 .all-page-container {
-  margin: 10px;
 
   background-color: #f7f8fa;
 
@@ -113,7 +112,7 @@
 
 .initial-box {
   height: 82dvh;
-  padding: 30px;
+  padding: 50px;
 
   border: 3px solid #0c6cfc;
   border-radius: 10px;
@@ -567,7 +566,6 @@
 .comments-list {
   padding: 20px;
   padding-bottom: 165px;
-  width: 80dvw;
 
   display: flex;
   flex-direction: column;
@@ -578,7 +576,7 @@
 
 .comment-container {
   padding: 10px;
-  width: 100%;
+  width: 370px;
 
   border: 3px solid #013582;
   border-radius: 10px;
