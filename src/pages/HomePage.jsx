@@ -1,65 +1,78 @@
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer"
 import logo from "../assets/Logo-removebg.png";
-import Footer from "../components/Footer";
+import smartPhonePrev from "../assets/smartphone-prev-removebg-preview.png"
 
 function HomePage() {
   return (
     <>
       <div className="home-page-container">
-        <nav class="navbar navbar-expand-lg bg-info">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+        <nav className="navbar navbar-expand-lg">
+          <div className="container-fluid">
+            <a className="navbar-brand" href="/">
               Beaglo
             </a>
             <button
-              class="navbar-toggler"
+              className="navbar-toggler"
               type="button"
               data-bs-toggle="collapse"
-              data-bs-target="#navbarNav"
-              aria-controls="navbarNav"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span class="navbar-toggler-icon"></span>
+              <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/login">
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a className="nav-link active" aria-current="page" href="/login">
                     Login
                   </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/signup">
+                <li className="nav-item">
+                  <a className="nav-link" href="/signup">
                     Signup
                   </a>
                 </li>
               </ul>
+              <form className="d-flex" role="search">
+                <input
+                  className="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button className="btn btn-outline-primary" type="submit">
+                  Search
+                </button>
+              </form>
             </div>
           </div>
         </nav>
+
         <section className="first-section">
           <img src={logo} alt="Logo" id="main-logo" />
         </section>
         <section className="second-section">
-          <h2>Haz parte de la familia de viajeros de Beaglo</h2>
-          <h3>Y conectate con el mundo</h3>
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <Link to="/login">
-              <button class="btn btn-outline-light" type="button">
-                Login
-              </button>
-            </Link>
+          <div className="smartphone-img-prev-container">
+            <img src={smartPhonePrev} alt="smartphone preview" />
+          </div>
+          <div className="join-us-container">
+            <h2>Forma parte de una comunidad que viaja, conecta e inspira al mundo.</h2>
+            <div className="join-us-btn-container">
             <Link to="/signup">
-              <button class="btn btn-outline-light" type="button">
-                Signup
-              </button>
+              <button type="button" className="btn btn-primary">¡Crea tu cuenta!</button>
             </Link>
+            <Link to="/login">
+              <button type="button" className="btn btn-secondary">¿Ya tienes cuenta?</button>
+            </Link>
+            </div>
           </div>
         </section>
-        <div className="footer-section">
-          <Footer />
-        </div>
+        <footer>
+          <Footer/>
+        </footer>
       </div>
     </>
   );
