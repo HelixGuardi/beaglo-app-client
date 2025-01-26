@@ -28,22 +28,10 @@ function Card(props) {
         <div className="post-card-image">
           <img src={eachPost.image} alt="Img" />
         </div>
-        <div className="post-card-description">
-          <p>
-            {isExpanded
-              ? eachPost.description
-              : `${eachPost.description.substring(0, 101)}...`}
-          </p>
-          {eachPost.description.length > 100 && (
-            <button onClick={toggleDescription} id="description-toggle-btn">
-              {isExpanded ? "Ver menos" : "Ver más"}
-            </button>
-          )}
-        </div>
         <div className="post-interaction">
           <div className="main-post-btn">
             <button id="like-btn" className="toggle-menu-btns-config">
-              <img src={like} alt="like" />
+              <img src={like} alt="like" id="like-btn-img"/>
             </button>
             <button id="dislike-btn" className="toggle-menu-btns-config">
               <img src={dislike} alt="dislike" />
@@ -82,6 +70,18 @@ function Card(props) {
             }
             </ul>
           </div>
+        </div>
+        <div className="post-card-description">
+          <p>
+            {isExpanded
+              ? eachPost.description
+              : `${eachPost.description.substring(0, 101)}...`}
+          </p>
+          {eachPost.description.length > 100 && (
+            <button onClick={toggleDescription} id="description-toggle-btn">
+              {isExpanded ? "Ver menos" : "Ver más"}
+            </button>
+          )}
         </div>
       </div>
     </>

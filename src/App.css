@@ -242,16 +242,15 @@
 /*** Card Section ***/
 .post-card-container {
   width: 95%;
-  border: 3px solid #6997fc;
   border-radius: 10px;
 
   background-color: #f7f8fa;
-  box-shadow: 0px 0px 10px #888;
+  box-shadow: 0px 0px 10px #777;
 
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
-  gap: 5px;
 }
 
 .post-card-header {
@@ -283,7 +282,6 @@
 }
 
 .post-card-image img {
-  border-radius: 5px;
   width: 100%;
 }
 
@@ -314,17 +312,13 @@
 .post-interaction {
   width: 100%;
 
-  border-top: 2px solid #0c6cfc;
-  border-radius: 0 0 7px 7px;
-  background-color: #013582;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .post-interaction button {
-  margin: 5px;
+  margin: 3px;
   border-radius: 15px;
   border: none;
 }
@@ -334,7 +328,11 @@
 }
 
 .post-interaction button img {
-  width: 35px;
+  width: 45px;
+}
+
+#like-btn-img {
+  width: 48px;
 }
 
 .main-post-btn {
