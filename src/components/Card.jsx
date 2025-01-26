@@ -4,6 +4,7 @@ import commentIcon from "../assets/add-comment-icon.webp";
 import dotsConfig from "../assets/dots-confit-icon.png";
 import profileIconPh from "../assets/profile-icon-placeholder.webp";
 import activedLike from "../assets/like-active.png"
+import activedDislike from "../assets/dislike-active.png"
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
@@ -20,11 +21,10 @@ function Card(props) {
     setIsExpanded(!isExpanded);
   };
 
-  const handleLike = async (e) => {
+  const handleLike = async () => {
     if(!eachPost.likes.includes(loggedUserId)) {
       try {
         await service.patch(`/posts/${eachPost._id}/like`);
-        console.log("like")
         getData()
   
       } catch (error) {
@@ -33,13 +33,37 @@ function Card(props) {
     } else {
       try {
         await service.patch(`/posts/${eachPost._id}/undo-like`)
-        console.log("undo like")
         getData()
       } catch (error) {
         console.log(error)
       }
     }
   };
+
+  const handleDislike = async () => {
+    if(!eachPost.dislikes.includes(loggedUserId)) {
+      //dar dislike
+      try {
+        await service.patch(`/posts/${eachPost._id}/dislike`)
+        getData()
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      //quitar dislike
+      try {
+        await service.patch(`/posts/${eachPost._id}/undo-dislike`)
+        getData()
+      } catch (error) {
+        console.log(error)
+      }
+      try {
+        
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 
   return (
     <>
@@ -71,9 +95,19 @@ function Card(props) {
                 <img src={like} alt="like" id="like-btn-img" />
               </button>
             )}
-            <button id="dislike-btn" className="toggle-menu-btns-config">
+
+            {eachPost.dislikes.includes(loggedUserId) 
+            ? (
+              <button id="dislike-btn" className="toggle-menu-btns-config" onClick={handleDislike}>
+              <img src={activedDislike} alt="dislike" />
+            </button>
+            ) : (
+              <button id="dislike-btn" className="toggle-menu-btns-config" onClick={handleDislike}>
               <img src={dislike} alt="dislike" />
             </button>
+            )
+            }
+
             <Link to={`/feed/${eachPost._id}`}>
               <button id="comment-btn" className="toggle-menu-btns-config">
                 <img src={commentIcon} alt="comment" />
