@@ -14,6 +14,7 @@ function EditProfilePage() {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [username, setUsername] = useState("");
+  const [image, setImage] = useState(""); //! PENDIENTE FUNCIONALIDAD AGREGAR IMAGEN DE PERFIL
 
   const handleNameChange = (e) => setName(e.target.value)
   const handleSurnameChange = (e) => setSurname(e.target.value)

@@ -9,11 +9,9 @@ import Navbar from "../components/Navbar";
 function UsersProfilePage() {
 
     const dynamicParams = useParams();
-    console.log(dynamicParams)
 
     const [user, setUser] = useState("");
     const [posts, setPosts] = useState([]);
-    console.log(user)
 
     useEffect(() => {
       getData();
