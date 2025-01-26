@@ -4,6 +4,8 @@ import Logo from "../assets/logo-name-icon-removebg.png";
 import profileIconPh from "../assets/profile-icon-placeholder.webp";
 import like from "../assets/like-btn-icon.png";
 import dislike from "../assets/dislike-btn-icon.png";
+import activedLike from "../assets/like-active.png";
+import activedDislike from "../assets/dislike-active.png";
 import dotsConfig from "../assets/dots-confit-icon.png";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
@@ -15,7 +17,7 @@ import { AuthContext } from "../context/auth.context";
 function CommentsPage() {
   const navigate = useNavigate();
 
-  const { loggedUserId } = useContext(AuthContext)
+  const { loggedUserId } = useContext(AuthContext);
 
   const dynamicParams = useParams();
   const [post, setPost] = useState(null);
@@ -59,6 +61,48 @@ function CommentsPage() {
     );
   }
 
+  const handleLike = async () => {
+    if (!post.likes.includes(loggedUserId)) {
+      try {
+        await service.patch(`/posts/${post._id}/like`);
+        getData();
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        await service.patch(`/posts/${post._id}/undo-like`);
+        getData();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const handleDislike = async () => {
+    if (!post.dislikes.includes(loggedUserId)) {
+      //dar dislike
+      try {
+        await service.patch(`/posts/${post._id}/dislike`);
+        getData();
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      //quitar dislike
+      try {
+        await service.patch(`/posts/${post._id}/undo-dislike`);
+        getData();
+      } catch (error) {
+        console.log(error);
+      }
+      try {
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   const handleComment = (e) => {
     setContent(e.target.value);
   };
@@ -79,15 +123,14 @@ function CommentsPage() {
     }
   };
 
-  const deleteComment = async(commentId) => {
+  const deleteComment = async (commentId) => {
     try {
       await service.delete(`/comments/${commentId}`);
       getData();
-
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   return (
     <>
@@ -120,12 +163,41 @@ function CommentsPage() {
           </div>
           <div className="post-interaction">
             <div className="main-post-btn">
-              <button id="like-btn" className="toggle-menu-btns-config">
-                <img src={like} alt="like" />
-              </button>
-              <button id="dislike-btn" className="toggle-menu-btns-config">
-                <img src={dislike} alt="dislike" />
-              </button>
+              {post.likes.includes(loggedUserId) ? (
+                <button
+                  id="like-btn"
+                  className="toggle-menu-btns-config"
+                  onClick={handleLike}
+                >
+                  <img src={activedLike} alt="like" id="like-btn-img" />
+                </button>
+              ) : (
+                <button
+                  id="like-btn"
+                  className="toggle-menu-btns-config"
+                  onClick={handleLike}
+                >
+                  <img src={like} alt="like" id="like-btn-img" />
+                </button>
+              )}
+
+              {post.dislikes.includes(loggedUserId) ? (
+                <button
+                  id="dislike-btn"
+                  className="toggle-menu-btns-config"
+                  onClick={handleDislike}
+                >
+                  <img src={activedDislike} alt="dislike" />
+                </button>
+              ) : (
+                <button
+                  id="dislike-btn"
+                  className="toggle-menu-btns-config"
+                  onClick={handleDislike}
+                >
+                  <img src={dislike} alt="dislike" />
+                </button>
+              )}
             </div>
             <div className="config-post dropdown">
               <button
@@ -136,12 +208,13 @@ function CommentsPage() {
                 <img src={dotsConfig} alt="options" />
               </button>
               <ul className="dropdown-menu custom-dropdown">
-              {post.userCreator._id === loggedUserId 
-              ? <Link to={`/posts/edit/${post._id}`}>
-                  <button className="dropdown-item">Edit Post</button>
-                </Link>
-              :   <button className="dropdwon-item">Report Issue</button>
-              }
+                {post.userCreator._id === loggedUserId ? (
+                  <Link to={`/posts/edit/${post._id}`}>
+                    <button className="dropdown-item">Edit Post</button>
+                  </Link>
+                ) : (
+                  <button className="dropdwon-item">Report Issue</button>
+                )}
               </ul>
             </div>
           </div>
@@ -150,10 +223,10 @@ function CommentsPage() {
           {comments.map((eachComment) => {
             return (
               <div className="comment-container" key={eachComment._id}>
-              <div>
-                <span id="comment-content-p">{eachComment.content}</span>
-                <p id="comment-user-p">{eachComment.user.username}</p>
-              </div>
+                <div>
+                  <span id="comment-content-p">{eachComment.content}</span>
+                  <p id="comment-user-p">{eachComment.user.username}</p>
+                </div>
                 <div className="config-post dropdown">
                   <button
                     id="config-post-btn"
@@ -167,18 +240,19 @@ function CommentsPage() {
                     />
                   </button>
                   <ul className="dropdown-menu custom-dropdown">
-                  {eachComment.user._id === loggedUserId 
-                  ?  <button
-                      type="button"
-                      className="btn btn-primary dropdown-item"
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop"
-                      onClick={() => deleteComment(eachComment._id)}
-                    >
-                      Delete Comment
-                    </button>
-                  : <button className="dropdwon-item">Report Issue</button>
-                  }
+                    {eachComment.user._id === loggedUserId ? (
+                      <button
+                        type="button"
+                        className="btn btn-primary dropdown-item"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        onClick={() => deleteComment(eachComment._id)}
+                      >
+                        Delete Comment
+                      </button>
+                    ) : (
+                      <button className="dropdwon-item">Report Issue</button>
+                    )}
                   </ul>
                 </div>
               </div>
