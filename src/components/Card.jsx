@@ -3,19 +3,42 @@ import dislike from "../assets/dislike-btn-icon.png";
 import commentIcon from "../assets/add-comment-icon.webp";
 import dotsConfig from "../assets/dots-confit-icon.png";
 import profileIconPh from "../assets/profile-icon-placeholder.webp";
+import activedLike from "../assets/like-active.png"
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import service from "../services/config.services";
 
 function Card(props) {
-  const { eachPost, setPostToDelete } = props;
+  const { eachPost, setPostToDelete, getData } = props;
 
-  const { loggedUserId } = useContext(AuthContext)
+  const { loggedUserId } = useContext(AuthContext);
 
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
+  };
+
+  const handleLike = async (e) => {
+    if(!eachPost.likes.includes(loggedUserId)) {
+      try {
+        await service.patch(`/posts/${eachPost._id}/like`);
+        console.log("like")
+        getData()
+  
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        await service.patch(`/posts/${eachPost._id}/undo-like`)
+        console.log("undo like")
+        getData()
+      } catch (error) {
+        console.log(error)
+      }
+    }
   };
 
   return (
@@ -30,9 +53,24 @@ function Card(props) {
         </div>
         <div className="post-interaction">
           <div className="main-post-btn">
-            <button id="like-btn" className="toggle-menu-btns-config">
-              <img src={like} alt="like" id="like-btn-img"/>
-            </button>
+            {eachPost.likes.includes(loggedUserId) 
+            ? (
+              <button
+                id="like-btn"
+                className="toggle-menu-btns-config"
+                onClick={handleLike}
+              >
+                <img src={activedLike} alt="like" id="like-btn-img" />
+              </button>
+            ) : (
+              <button
+                id="like-btn"
+                className="toggle-menu-btns-config"
+                onClick={handleLike}
+              >
+                <img src={like} alt="like" id="like-btn-img" />
+              </button>
+            )}
             <button id="dislike-btn" className="toggle-menu-btns-config">
               <img src={dislike} alt="dislike" />
             </button>
@@ -51,23 +89,24 @@ function Card(props) {
               <img src={dotsConfig} alt="config" />
             </button>
             <ul className="dropdown-menu custom-dropdown">
-            {eachPost.userCreator._id === loggedUserId 
-            ? <div>
-               <button
-                type="button"
-                className="btn btn-primary dropdown-item"
-                data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop"
-                onClick={() => setPostToDelete(eachPost._id)}
-              >
-                Delete Post
-              </button>
-              <Link to={`/posts/edit/${eachPost._id}`}>
-                <button className="dropdwon-item">Edit Post</button>
-              </Link>
-            </div>
-            : <button className="dropdwon-item">Report Issue</button>
-            }
+              {eachPost.userCreator._id === loggedUserId ? (
+                <div>
+                  <button
+                    type="button"
+                    className="btn btn-primary dropdown-item"
+                    data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop"
+                    onClick={() => setPostToDelete(eachPost._id)}
+                  >
+                    Delete Post
+                  </button>
+                  <Link to={`/posts/edit/${eachPost._id}`}>
+                    <button className="dropdwon-item">Edit Post</button>
+                  </Link>
+                </div>
+              ) : (
+                <button className="dropdwon-item">Report Issue</button>
+              )}
             </ul>
           </div>
         </div>
