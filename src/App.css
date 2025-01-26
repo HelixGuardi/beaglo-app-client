@@ -397,7 +397,6 @@
 
 /*** Create Post ***/
 .create-post-container {
-  height: 100dvh;
   padding: 10px;
   padding-bottom: 70px;
 
@@ -449,6 +448,18 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+}
+
+.cloudinary-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 5px;
+}
+
+.custom-prev-img {
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #555;
 }
 
 /*** Edit Post ***/

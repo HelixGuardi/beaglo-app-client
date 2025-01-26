@@ -40,7 +40,7 @@ function CreatePost() {
       <h1 className="basic-title-layout">Create your Post</h1>
       <form className="general-form-app" onSubmit={handleFormSubmit}>
 
-        <Cloudinary setImage={setImage} image={image} />
+          <Cloudinary setImage={setImage} image={image} />
 
         <div className="location-input-container">
           <label htmlFor="exampleDataList" className="form-label">
