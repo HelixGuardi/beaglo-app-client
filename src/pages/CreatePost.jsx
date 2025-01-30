@@ -29,7 +29,7 @@ function CreatePost() {
         },
       });
       setImage(response.data.secure_url);
-      console.log("file secure desde el lado correcto: ", response.data.secure_url);
+      // console.log("file secure desde el lado correcto: ", response.data.secure_url);
       setLoading(false);
     } catch (error) {
       console.log("Error uploading image: ", error);

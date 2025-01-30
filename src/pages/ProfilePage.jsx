@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Link, useNavigate } from "react-router-dom";
 import service from "../services/config.services";
-import profileIconPh from "../assets/profile-icon-degrade-blue-color.png";
 import Navbar from "../components/Navbar";
 import PostList from "../components/PostList";
 
@@ -48,7 +47,7 @@ function ProfilePage() {
       <div className="profile-container">
         <header className="profile-header">
           <img
-            src={profileIconPh}
+            src={user.profileImg}
             alt="profile photo here"
             id="profile-photo-img"
           />

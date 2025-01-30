@@ -2,7 +2,6 @@ import like from "../assets/like-btn-icon.png";
 import dislike from "../assets/dislike-btn-icon.png";
 import commentIcon from "../assets/add-comment-icon.webp";
 import dotsConfig from "../assets/dots-confit-icon.png";
-import profileIconPh from "../assets/profile-icon-placeholder.webp";
 import activedLike from "../assets/like-active.png"
 import activedDislike from "../assets/dislike-active.png"
 import { useContext, useState } from "react";
@@ -13,7 +12,7 @@ import service from "../services/config.services";
 function Card(props) {
   const { eachPost, setPostToDelete, getData } = props;
 
-  const { loggedUserId } = useContext(AuthContext);
+  const { loggedUserId } = useContext(AuthContext); // user ID
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -71,7 +70,7 @@ function Card(props) {
     <>
       <div className="post-card-container">
         <header className="post-card-header">
-          <img src={profileIconPh} alt="profile icon" id="profile-icon" />
+          <img src={eachPost.userCreator.profileImg} alt="profile icon" id="profile-icon" />
           <h3 id="user-name-header">{eachPost.userCreator.username}</h3>
         </header>
         <div className="post-card-image">

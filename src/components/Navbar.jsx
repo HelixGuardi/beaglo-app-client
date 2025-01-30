@@ -2,11 +2,29 @@ import homeIcon from "../assets/home-icon.webp";
 import messageIcon from "../assets/message-icon.png";
 import createNewIcon from "../assets/create-new-post-icon.png";
 import magnifyingGlassIcon from "../assets/magnifying-glass.png";
-import profileIcon from "../assets/profile-icon-degrade-blue-color.png";
 import { Link } from "react-router-dom";
+import service from "../services/config.services";
+import { useEffect, useState } from "react";
 
 function Navbar() {
-  
+
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
+  const getUser = async() => {
+    try {
+      
+      const response = await service.get("/users/own")
+      setUser(response.data)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <nav className="nav-container">
@@ -49,9 +67,10 @@ function Navbar() {
         <Link to='/profile/own'>
           <button id="profile-icon-btn" className="btn-basic-config">
             <img
-              src={profileIcon}
+              src={user.profileImg}
               alt="profile icon"
               className="icon-basic-config"
+              id="nav-profile-icon"
             />
           </button>
         </Link>
