@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import service from "../services/config.services";
+import { RingLoader } from "react-spinners";
 
 // componente contexto (transmite el contexto por la app)
 const AuthContext = createContext();
@@ -10,25 +11,24 @@ function AuthWrapper(props) {
   const [loggedUserId, setLoggedUserId] = useState(null); //estado para saber quien es el usuario
   // opcionalmente estados de roles
 
-  const [isAuthenticating, setIsAuthenticating] = useState(true)
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
 
-  const authenticateUser = async() => { //función para validar el token cuando sea necesario // valida el token y actualiza los estados acorde
-    setIsAuthenticating(true) // forzar la carga del spinner al momento de validar el token
+  const authenticateUser = async () => {
+    //función para validar el token cuando sea necesario // valida el token y actualiza los estados acorde
+    setIsAuthenticating(true); // forzar la carga del spinner al momento de validar el token
 
     try {
-      
-      const response = await service.get("/auth/verify")
+      const response = await service.get("/auth/verify");
 
-      setIsLoggedIn(true)
-      setLoggedUserId(response.data.payload._id)
-      setIsAuthenticating(false)
-
+      setIsLoggedIn(true);
+      setLoggedUserId(response.data.payload._id);
+      setIsAuthenticating(false);
     } catch (error) {
-      console.log("token no validado")
+      console.log("token no validado");
 
-      setIsLoggedIn(false)
-      setLoggedUserId(null)
-      setIsAuthenticating(false)
+      setIsLoggedIn(false);
+      setLoggedUserId(null);
+      setIsAuthenticating(false);
     }
   };
 
@@ -38,13 +38,17 @@ function AuthWrapper(props) {
     authenticateUser,
   };
 
-useEffect(() => {
-  // al inicio de que el usuario navega por la app, intentaremos validar su token
-  authenticateUser()
-}, [])
+  useEffect(() => {
+    // al inicio de que el usuario navega por la app, intentaremos validar su token
+    authenticateUser();
+  }, []);
 
-  if(isAuthenticating) {
-    return <div><h3>...Loading</h3></div>
+  if (isAuthenticating) {
+    return (
+      <div className="loading-container">
+        <RingLoader color="#6997fc" />
+      </div>
+    );
   }
 
   return (

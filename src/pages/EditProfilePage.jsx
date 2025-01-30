@@ -1,20 +1,34 @@
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import { useContext, useState } from "react";
-import { AuthContext } from "../context/auth.context";
+import { useEffect, useState } from "react";
 import service from "../services/config.services";
-import { PropagateLoader } from "react-spinners";
+import { RingLoader } from "react-spinners";
 
 function EditProfilePage() {
 
-  const { authenticateUser } = useContext(AuthContext);
+  const [user, setUser] = useState("")
+
+  useEffect(() => {
+    findUser()
+  }, [])
+
+  const findUser = async() => {
+    try {
+      
+      const response = await service.get("/users/own")
+      setUser(response.data)
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
-  const [username, setUsername] = useState("");
-  const [image, setImage] = useState("");
+  const [name, setName] = useState(user.name);
+  const [surname, setSurname] = useState(user.surname);
+  const [username, setUsername] = useState(user.username);
+  const [image, setImage] = useState(user.profileImg);
   const [loading, setLoading] = useState(false);
 
   const handleNameChange = (e) => setName(e.target.value)
@@ -72,7 +86,7 @@ function EditProfilePage() {
         <div className="profile-picture-section">
         {loading ? (
             <div className="loading-container">
-              <PropagateLoader color="#6997fc" />
+              <RingLoader color="#6997fc" />
             </div>
           ) : (
            <> 
