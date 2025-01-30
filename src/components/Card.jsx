@@ -23,6 +23,7 @@ function Card(props) {
 
   const handleLike = async () => {
     if(!eachPost.likes.includes(loggedUserId)) {
+      // dar like
       try {
         await service.patch(`/posts/${eachPost._id}/like`);
         getData()
@@ -31,6 +32,7 @@ function Card(props) {
         console.log(error);
       }
     } else {
+      // quitar like
       try {
         await service.patch(`/posts/${eachPost._id}/undo-like`)
         getData()
