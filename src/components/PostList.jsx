@@ -61,7 +61,7 @@ function PostList(props) {
                   aria-label="Close"
                 ></button>
               </div>
-              <div className="modal-body">...</div>
+              <div className="modal-body">If you continue you will not be able to recover the publication and the information will be lost forever.</div>
               <div className="modal-footer">
                 <button
                   type="button"
