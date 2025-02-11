@@ -11,6 +11,7 @@ import service from "../services/config.services";
 
 function Card(props) {
   const { eachPost, setPostToDelete, getData } = props;
+  console.log(eachPost)
 
   const { loggedUserId } = useContext(AuthContext); // user ID
 
@@ -80,32 +81,44 @@ function Card(props) {
           <div className="main-post-btn">
             {eachPost.likes.includes(loggedUserId) 
             ? (
-              <button
-                id="like-btn"
-                className="toggle-menu-btns-config"
-                onClick={handleLike}
-              >
-                <img src={activedLike} alt="like" id="like-btn-img" />
-              </button>
+              <>
+                <button
+                  id="like-btn"
+                  className="toggle-menu-btns-config"
+                  onClick={handleLike}
+                >
+                  <img src={activedLike} alt="like" id="like-btn-img" />
+                </button>
+                <p>{eachPost.likes.length}</p>
+              </>
             ) : (
-              <button
-                id="like-btn"
-                className="toggle-menu-btns-config"
-                onClick={handleLike}
-              >
-                <img src={like} alt="like" id="like-btn-img" />
-              </button>
+              <>
+                <button
+                  id="like-btn"
+                  className="toggle-menu-btns-config"
+                  onClick={handleLike}
+                >
+                  <img src={like} alt="like" id="like-btn-img" />
+                </button>
+                <p>{eachPost.likes.length}</p>
+              </>
             )}
 
             {eachPost.dislikes.includes(loggedUserId) 
             ? (
-              <button id="dislike-btn" className="toggle-menu-btns-config" onClick={handleDislike}>
-              <img src={activedDislike} alt="dislike" />
-            </button>
+              <>
+                <button id="dislike-btn" className="toggle-menu-btns-config" onClick={handleDislike}>
+                  <img src={activedDislike} alt="dislike" />
+                </button>
+                <p>{eachPost.dislikes.length}</p>
+              </>
             ) : (
-              <button id="dislike-btn" className="toggle-menu-btns-config" onClick={handleDislike}>
-              <img src={dislike} alt="dislike" />
-            </button>
+              <>
+                <button id="dislike-btn" className="toggle-menu-btns-config" onClick={handleDislike}>
+                  <img src={dislike} alt="dislike" />
+                </button>
+                <p>{eachPost.dislikes.length}</p>
+              </>
             )
             }
 
