@@ -67,27 +67,18 @@
 
 /*** LOGIN/SIGNUP SECTION ***/
 .all-page-container {
-
   background-color: #f7f8fa;
-
+  height: 100dvh;
+  min-height: 940px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
-}
-
-#all-page-container-login {
-  height: 100dvh;
-}
-
-.logo-empty-space {
-  margin-bottom: 100px;
 }
 
 .logo {
   width: 125px;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -100,7 +91,7 @@
 
 @keyframes slideInDown {
   from {
-    transform: translate3d(-50%, -100%, 0);
+    transform: translate3d(-50%, -15%, 0);
     opacity: 0;
   }
 
@@ -111,20 +102,13 @@
 }
 
 .initial-box {
-  height: 82dvh;
-  padding: 50px;
+  padding: 55px;
+  margin: 0 75px;
+  text-align: center;
 
   border: 3px solid #0c6cfc;
   border-radius: 10px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#initial-box-login {
-  height: 45dvh;
 }
 
 .error-message {
@@ -135,13 +119,19 @@
 
 .form-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
+  gap: 5px;
 }
 
 .form-container input:hover {
   box-shadow: 5px 5px 10px #6997fc;
+}
+
+#form-container-login{
+  display: flex;
+  flex-direction: column;
 }
 
 #date-input {
@@ -767,8 +757,6 @@
 
 
 /*** RESPONSIVE ADJUSTMENTS SECTION ***/
-
-
 @media (min-width: 769px) and (max-width: 1024px) {
   .post-card-container {
     width: 600px;

@@ -61,7 +61,7 @@ function LoginPage() {
         <div className="initial-box" id="initial-box-login">
           <h1>LOGIN</h1> <br />
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <form className="form-container" onSubmit={handleLogin}>
+          <form className="form-container" id="form-container-login" onSubmit={handleLogin}>
             <div className="form-floating mb-3">
               <input
                 type="email"
