@@ -387,7 +387,7 @@
 }
 
 .nav-container button:hover {
-  border: 2px solid #6997fc;
+  transform: scale(1.2);
 }
 
 #nav-profile-icon {
@@ -404,10 +404,12 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  gap: 50px;
 }
 
 .basic-title-layout {
   padding: 10px;
+  margin: 10px auto;
 
   border: 5px solid #007bff;
   border-radius: 15px;
@@ -418,8 +420,8 @@
 }
 
 .general-form-app {
-  height: 65%;
   padding: 20px;
+  margin: 0 auto;
 
   border: 3px solid #0c6cfc;
   border-radius: 15px;
@@ -458,6 +460,7 @@
 }
 
 .custom-prev-img {
+  width: 450px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px #555;
 }

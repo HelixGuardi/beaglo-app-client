@@ -3,11 +3,12 @@ import Navbar from "../components/Navbar";
 import { useState } from "react";
 import service from "../services/config.services";
 import { PropagateLoader } from "react-spinners";
+import imgPlaceHolder from "../assets/img-general-place-holder.jpeg"
 
 function CreatePost() {
   const navigate = useNavigate();
 
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(imgPlaceHolder);
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
