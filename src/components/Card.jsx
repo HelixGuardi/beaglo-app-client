@@ -16,6 +16,8 @@ function Card(props) {
   const { loggedUserId } = useContext(AuthContext); // user ID
 
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [isDisliked, setIsDisliked] = useState(false);
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
@@ -25,8 +27,14 @@ function Card(props) {
     if(!eachPost.likes.includes(loggedUserId)) {
       // dar like
       try {
+
+        if(isDisliked){
+          await service.patch(`/posts/${eachPost._id}/undo-dislike`)
+        }
+
         await service.patch(`/posts/${eachPost._id}/like`);
-        getData()
+        setIsLiked(true);
+        getData();
   
       } catch (error) {
         console.log(error);
@@ -46,8 +54,15 @@ function Card(props) {
     if(!eachPost.dislikes.includes(loggedUserId)) {
       //dar dislike
       try {
+
+        if(isLiked){
+          await service.patch(`/posts/${eachPost._id}/undo-like`)
+        }
+
         await service.patch(`/posts/${eachPost._id}/dislike`)
+        setIsDisliked(true)
         getData()
+
       } catch (error) {
         console.log(error)
       }
