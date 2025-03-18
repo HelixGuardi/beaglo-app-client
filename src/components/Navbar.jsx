@@ -10,7 +10,7 @@ import profileIconPlaceHolder from "../assets/profile-icon-degrade-blue-color.pn
 function Navbar() {
 
   const [user, setUser] = useState("");
-
+  
   useEffect(() => {
     getUser()
   }, [])

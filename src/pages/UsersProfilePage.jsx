@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import service from "../services/config.services";
-import profileIconPh from "../assets/profile-icon-degrade-blue-color.png"
 import PostList from "../components/PostList";
 import Navbar from "../components/Navbar";
-
 
 function UsersProfilePage() {
 
