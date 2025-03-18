@@ -1,11 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Logo from "../assets/logo-name-icon-removebg.png";
-import profileIconPh from "../assets/profile-icon-placeholder.webp";
-import like from "../assets/like-btn-icon.png";
-import dislike from "../assets/dislike-btn-icon.png";
-import activedLike from "../assets/like-active.png";
-import activedDislike from "../assets/dislike-active.png";
 import dotsConfig from "../assets/dots-confit-icon.png";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
@@ -61,48 +56,6 @@ function CommentsPage() {
     );
   }
 
-  const handleLike = async () => {
-    if (!post.likes.includes(loggedUserId)) {
-      try {
-        await service.patch(`/posts/${post._id}/like`);
-        getData();
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      try {
-        await service.patch(`/posts/${post._id}/undo-like`);
-        getData();
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-
-  const handleDislike = async () => {
-    if (!post.dislikes.includes(loggedUserId)) {
-      //dar dislike
-      try {
-        await service.patch(`/posts/${post._id}/dislike`);
-        getData();
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      //quitar dislike
-      try {
-        await service.patch(`/posts/${post._id}/undo-dislike`);
-        getData();
-      } catch (error) {
-        console.log(error);
-      }
-      try {
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  };
-
   const handleComment = (e) => {
     setContent(e.target.value);
   };
@@ -143,7 +96,11 @@ function CommentsPage() {
       <div className="comment-page-container">
         <div className="post-card-container">
           <header className="post-card-header">
-            <img src={post.userCreator.profileImg} alt="profile-icon" id="profile-icon" />
+            <img
+              src={post.userCreator.profileImg}
+              alt="profile-icon"
+              id="profile-icon"
+            />
             <h3 id="user-name-header">{post.userCreator.username}</h3>
           </header>
           <div className="post-card-image">
@@ -160,63 +117,6 @@ function CommentsPage() {
                 {isExpanded ? "Ver menos" : "Ver más"}
               </button>
             )}
-          </div>
-          <div className="post-interaction">
-            <div className="main-post-btn">
-              {post.likes.includes(loggedUserId) ? (
-                <button
-                  id="like-btn"
-                  className="toggle-menu-btns-config"
-                  onClick={handleLike}
-                >
-                  <img src={activedLike} alt="like" id="like-btn-img" />
-                </button>
-              ) : (
-                <button
-                  id="like-btn"
-                  className="toggle-menu-btns-config"
-                  onClick={handleLike}
-                >
-                  <img src={like} alt="like" id="like-btn-img" />
-                </button>
-              )}
-
-              {post.dislikes.includes(loggedUserId) ? (
-                <button
-                  id="dislike-btn"
-                  className="toggle-menu-btns-config"
-                  onClick={handleDislike}
-                >
-                  <img src={activedDislike} alt="dislike" />
-                </button>
-              ) : (
-                <button
-                  id="dislike-btn"
-                  className="toggle-menu-btns-config"
-                  onClick={handleDislike}
-                >
-                  <img src={dislike} alt="dislike" />
-                </button>
-              )}
-            </div>
-            <div className="config-post dropdown">
-              <button
-                id="config-post-btn"
-                className="btn dropdown-toggle"
-                data-bs-toggle="dropdown"
-              >
-                <img src={dotsConfig} alt="options" />
-              </button>
-              <ul className="dropdown-menu custom-dropdown">
-                {post.userCreator._id === loggedUserId ? (
-                  <Link to={`/posts/edit/${post._id}`}>
-                    <button className="dropdown-item">Edit Post</button>
-                  </Link>
-                ) : (
-                  <button className="dropdwon-item">Report Issue</button>
-                )}
-              </ul>
-            </div>
           </div>
         </div>
         <div className="comments-list">

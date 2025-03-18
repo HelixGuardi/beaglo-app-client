@@ -5,6 +5,7 @@ import magnifyingGlassIcon from "../assets/magnifying-glass.png";
 import { Link } from "react-router-dom";
 import service from "../services/config.services";
 import { useEffect, useState } from "react";
+import profileIconPlaceHolder from "../assets/profile-icon-degrade-blue-color.png"
 
 function Navbar() {
 
@@ -67,7 +68,7 @@ function Navbar() {
         <Link to='/profile/own'>
           <button id="profile-icon-btn" className="btn-basic-config">
             <img
-              src={user.profileImg}
+              src={user.profileImg ? user.profileImg : profileIconPlaceHolder}
               alt="profile icon"
               className="icon-basic-config"
               id="nav-profile-icon"

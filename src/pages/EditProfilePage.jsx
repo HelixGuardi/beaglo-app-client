@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import service from "../services/config.services";
 import { RingLoader } from "react-spinners";
+import profileIconPlaceHolder from "../assets/profile-icon-degrade-blue-color.png"
 
 function EditProfilePage() {
 
@@ -92,7 +93,7 @@ function EditProfilePage() {
            <> 
             <div className="profile-photo-rounded-container">
               <img
-                src={image}
+                src={image ? image : profileIconPlaceHolder}
                 alt="imagen subida"
                 className="img-fluid custom-prev-img"
                 id="profile-img"

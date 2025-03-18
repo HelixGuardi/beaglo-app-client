@@ -95,7 +95,7 @@ function Card(props) {
           <div className="main-post-btn">
             {eachPost.likes.includes(loggedUserId) 
             ? (
-              <>
+              <div class="likes-dislikes-container">
                 <button
                   id="like-btn"
                   className="toggle-menu-btns-config"
@@ -103,10 +103,10 @@ function Card(props) {
                 >
                   <img src={activedLike} alt="like" id="like-btn-img" />
                 </button>
-                <p>{eachPost.likes.length}</p>
-              </>
+                <p class="likes-counter">{eachPost.likes.length}</p>
+              </div>
             ) : (
-              <>
+              <div class="likes-dislikes-container">
                 <button
                   id="like-btn"
                   className="toggle-menu-btns-config"
@@ -114,25 +114,25 @@ function Card(props) {
                 >
                   <img src={like} alt="like" id="like-btn-img" />
                 </button>
-                <p>{eachPost.likes.length}</p>
-              </>
+                <p class="likes-counter">{eachPost.likes.length}</p>
+              </div>
             )}
 
             {eachPost.dislikes.includes(loggedUserId) 
             ? (
-              <>
+              <div class="likes-dislikes-container">
                 <button id="dislike-btn" className="toggle-menu-btns-config" onClick={handleDislike}>
                   <img src={activedDislike} alt="dislike" />
                 </button>
-                <p>{eachPost.dislikes.length}</p>
-              </>
+                <p class="likes-counter">{eachPost.dislikes.length}</p>
+              </div>
             ) : (
-              <>
+              <div class="likes-dislikes-container">
                 <button id="dislike-btn" className="toggle-menu-btns-config" onClick={handleDislike}>
                   <img src={dislike} alt="dislike" />
                 </button>
-                <p>{eachPost.dislikes.length}</p>
-              </>
+                <p class="likes-counter">{eachPost.dislikes.length}</p>
+              </div>
             )
             }
 
