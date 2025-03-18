@@ -33,7 +33,7 @@ function UsersProfilePage() {
       <div className="profile-container">
         <header className="profile-header">
           <img
-            src={profileIconPh}
+            src={user.profileImg}
             alt="profile photo here"
             id="profile-photo-img"
           />

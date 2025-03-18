@@ -11,7 +11,6 @@ import service from "../services/config.services";
 
 function Card(props) {
   const { eachPost, setPostToDelete, getData } = props;
-  console.log(eachPost)
 
   const { loggedUserId } = useContext(AuthContext); // user ID
 

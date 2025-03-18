@@ -17,7 +17,7 @@ import { AuthContext } from "../context/auth.context";
 function CommentsPage() {
   const navigate = useNavigate();
 
-  const { loggedUserId } = useContext(AuthContext);
+  const { loggedUserId } = useContext(AuthContext); // user ID
 
   const dynamicParams = useParams();
   const [post, setPost] = useState(null);
@@ -143,7 +143,7 @@ function CommentsPage() {
       <div className="comment-page-container">
         <div className="post-card-container">
           <header className="post-card-header">
-            <img src={profileIconPh} alt="profile-icon" id="profile-icon" />
+            <img src={post.userCreator.profileImg} alt="profile-icon" id="profile-icon" />
             <h3 id="user-name-header">{post.userCreator.username}</h3>
           </header>
           <div className="post-card-image">
